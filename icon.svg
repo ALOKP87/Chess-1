@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a1a3e"/>
+      <stop offset="100%" stop-color="#0a0a1a"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f0d68a"/>
+      <stop offset="50%" stop-color="#d4a843"/>
+      <stop offset="100%" stop-color="#8b6914"/>
+    </linearGradient>
+    <linearGradient id="board1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f0dca0"/>
+      <stop offset="100%" stop-color="#c8a860"/>
+    </linearGradient>
+    <linearGradient id="board2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a0704a"/>
+      <stop offset="100%" stop-color="#6a3e20"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="shadow">
+      <feDropShadow dx="2" dy="4" stdDeviation="4" flood-color="rgba(0,0,0,0.5)"/>
+    </filter>
+  </defs>
+
+  <!-- Background circle -->
+  <circle cx="256" cy="256" r="250" fill="url(#bg)" stroke="url(#gold)" stroke-width="8"/>
+
+  <!-- Inner glow ring -->
+  <circle cx="256" cy="256" r="230" fill="none" stroke="url(#gold)" stroke-width="1" opacity="0.3"/>
+
+  <!-- Board shadow -->
+  <rect x="100" y="140" width="280" height="280" rx="8" fill="rgba(0,0,0,0.3)" transform="translate(4,6)"/>
+
+  <!-- Board base -->
+  <rect x="100" y="140" width="280" height="280" rx="8" fill="url(#board2)" stroke="#8b6914" stroke-width="3"/>
+
+  <!-- Board squares (4x4 visible grid) -->
+  <!-- Row 1 -->
+  <rect x="107" y="147" width="65" height="65" fill="url(#board1)"/>
+  <rect x="172" y="147" width="65" height="65" fill="url(#board2)"/>
+  <rect x="237" y="147" width="65" height="65" fill="url(#board1)"/>
+  <rect x="302" y="147" width="65" height="65" fill="url(#board2)"/>
+  <!-- Row 2 -->
+  <rect x="107" y="212" width="65" height="65" fill="url(#board2)"/>
+  <rect x="172" y="212" width="65" height="65" fill="url(#board1)"/>
+  <rect x="237" y="212" width="65" height="65" fill="url(#board2)"/>
+  <rect x="302" y="212" width="65" height="65" fill="url(#board1)"/>
+  <!-- Row 3 -->
+  <rect x="107" y="277" width="65" height="65" fill="url(#board1)"/>
+  <rect x="172" y="277" width="65" height="65" fill="url(#board2)"/>
+  <rect x="237" y="277" width="65" height="65" fill="url(#board1)"/>
+  <rect x="302" y="277" width="65" height="65" fill="url(#board2)"/>
+  <!-- Row 4 -->
+  <rect x="107" y="342" width="65" height="65" fill="url(#board2)"/>
+  <rect x="172" y="342" width="65" height="65" fill="url(#board1)"/>
+  <rect x="237" y="342" width="65" height="65" fill="url(#board2)"/>
+  <rect x="302" y="342" width="65" height="65" fill="url(#board1)"/>
+
+  <!-- Board border shine -->
+  <rect x="100" y="140" width="280" height="280" rx="8" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+
+  <!-- White King piece -->
+  <g filter="url(#shadow)" transform="translate(195,160)">
+    <!-- Base -->
+    <rect x="0" y="80" width="60" height="12" rx="4" fill="#e8e8e8" stroke="#999" stroke-width="1.5"/>
+    <!-- Body -->
+    <path d="M12 80 L12 40 C12 28 20 20 30 20 C40 20 48 28 48 40 L48 80 Z" fill="url(#gold)" stroke="#8b6914" stroke-width="1.5"/>
+    <!-- Cross vertical -->
+    <line x1="30" y1="6" x2="30" y2="20" stroke="url(#gold)" stroke-width="5" stroke-linecap="round"/>
+    <!-- Cross horizontal -->
+    <line x1="22" y1="13" x2="38" y2="13" stroke="url(#gold)" stroke-width="5" stroke-linecap="round"/>
+    <!-- Crown detail -->
+    <path d="M18 40 C22 34 38 34 42 40" fill="none" stroke="#f0d68a" stroke-width="2"/>
+    <!-- Highlight -->
+    <ellipse cx="25" cy="50" rx="8" ry="15" fill="rgba(255,255,255,0.2)" transform="rotate(-8 25 50)"/>
+  </g>
+
+  <!-- Crown accent at top -->
+  <g filter="url(#glow)">
+    <path d="M220 50 L230 80 L245 60 L256 85 L267 60 L282 80 L292 50" fill="url(#gold)" stroke="#8b6914" stroke-width="1.5" opacity="0.9"/>
+    <rect x="218" y="48" width="76" height="6" rx="3" fill="url(#gold)" opacity="0.9"/>
+  </g>
+
+  <!-- Text: CHESS -->
+  <text x="256" y="475" text-anchor="middle" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="48" fill="url(#gold)" letter-spacing="8">CHESS</text>
+
+  <!-- Shine overlay -->
+  <ellipse cx="200" cy="160" rx="120" ry="80" fill="rgba(255,255,255,0.04)"/>
+</svg>

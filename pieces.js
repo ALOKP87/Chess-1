@@ -1,0 +1,30 @@
+/* ============================================
+   Royal Chess 3D - SVG Piece Definitions
+   Uses unique IDs per instance to avoid SVG conflicts
+   ============================================ */
+
+let _pid = 0;
+
+const ChessPieces = {
+  getSVG(type, color) {
+    const u = 'x' + (++_pid);
+    const w = color === 'w';
+    const f1 = w ? '#fff' : '#2a2a2a';
+    const f2 = w ? '#e8e8e8' : '#1a1a1a';
+    const sk = w ? '#888' : '#555';
+    const ac = w ? '#d4a843' : '#8b6914';
+    const g = `url(#${u}g)`;
+    const d = `url(#${u}d)`;
+    const defs = `<defs><linearGradient id="${u}g" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="${f1}"/><stop offset="100%" stop-color="${f2}"/></linearGradient><filter id="${u}d"><feDropShadow dx="1" dy="2" stdDeviation="1" flood-color="rgba(0,0,0,0.3)"/></filter></defs>`;
+
+    switch(type) {
+      case 'k': return `<svg viewBox="0 0 45 45">${defs}<g filter="${d}"><path d="M9 36L36 36 33 30 12 30Z" fill="${g}" stroke="${sk}" stroke-width="1.5"/><ellipse cx="22.5" cy="30" rx="12" ry="3" fill="${f1}" stroke="${sk}" stroke-width="1"/><path d="M15 30L15 18C15 14 19 11 22.5 11 26 11 30 14 30 18L30 30Z" fill="${g}" stroke="${sk}" stroke-width="1.5"/><line x1="22.5" y1="4" x2="22.5" y2="11" stroke="${ac}" stroke-width="2.5" stroke-linecap="round"/><line x1="19" y1="7" x2="26" y2="7" stroke="${ac}" stroke-width="2.5" stroke-linecap="round"/><path d="M17 18C19 15 26 15 28 18" fill="none" stroke="${ac}" stroke-width="1.5"/><ellipse cx="20" cy="22" rx="4" ry="6" fill="rgba(255,255,255,0.15)" transform="rotate(-10 20 22)"/><rect x="12" y="33" width="21" height="3" rx="1.5" fill="${ac}" opacity="0.6"/></g></svg>`;
+      case 'q': return `<svg viewBox="0 0 45 45">${defs}<g filter="${d}"><path d="M9 36L36 36 33 30 12 30Z" fill="${g}" stroke="${sk}" stroke-width="1.5"/><ellipse cx="22.5" cy="30" rx="12" ry="3" fill="${f1}" stroke="${sk}" stroke-width="1"/><path d="M15 30L17 16C18 13 27 13 28 16L30 30Z" fill="${g}" stroke="${sk}" stroke-width="1.5"/><circle cx="13" cy="10" r="2.5" fill="${f1}" stroke="${sk}"/><circle cx="19" cy="6" r="2.5" fill="${f1}" stroke="${sk}"/><circle cx="22.5" cy="5" r="2.5" fill="${f1}" stroke="${sk}"/><circle cx="26" cy="6" r="2.5" fill="${f1}" stroke="${sk}"/><circle cx="32" cy="10" r="2.5" fill="${f1}" stroke="${sk}"/><path d="M13 10L17 16 19 6 22.5 16 26 6 28 16 32 10" fill="none" stroke="${sk}" stroke-width="1.5"/><circle cx="13" cy="10" r="1.5" fill="${ac}"/><circle cx="22.5" cy="5" r="1.5" fill="${ac}"/><circle cx="32" cy="10" r="1.5" fill="${ac}"/><ellipse cx="20" cy="22" rx="4" ry="5" fill="rgba(255,255,255,0.15)" transform="rotate(-5 20 22)"/><rect x="12" y="33" width="21" height="3" rx="1.5" fill="${ac}" opacity="0.6"/></g></svg>`;
+      case 'r': return `<svg viewBox="0 0 45 45">${defs}<g filter="${d}"><path d="M9 36L36 36 33 30 12 30Z" fill="${g}" stroke="${sk}" stroke-width="1.5"/><ellipse cx="22.5" cy="30" rx="12" ry="3" fill="${f1}" stroke="${sk}" stroke-width="1"/><rect x="14" y="14" width="17" height="16" fill="${g}" stroke="${sk}" stroke-width="1.5"/><rect x="12" y="8" width="5" height="8" fill="${f1}" stroke="${sk}" stroke-width="1.5"/><rect x="19.5" y="8" width="6" height="8" fill="${f1}" stroke="${sk}" stroke-width="1.5"/><rect x="28" y="8" width="5" height="8" fill="${f1}" stroke="${sk}" stroke-width="1.5"/><rect x="12" y="8" width="21" height="3" rx="0.5" fill="${ac}" opacity="0.4"/><rect x="16" y="16" width="5" height="10" rx="1" fill="rgba(255,255,255,0.12)"/><rect x="12" y="33" width="21" height="3" rx="1.5" fill="${ac}" opacity="0.6"/></g></svg>`;
+      case 'b': return `<svg viewBox="0 0 45 45">${defs}<g filter="${d}"><path d="M9 36L36 36 33 30 12 30Z" fill="${g}" stroke="${sk}" stroke-width="1.5"/><ellipse cx="22.5" cy="30" rx="12" ry="3" fill="${f1}" stroke="${sk}" stroke-width="1"/><path d="M17 30L19 16C20 11 25 11 26 16L28 30Z" fill="${g}" stroke="${sk}" stroke-width="1.5"/><path d="M19 16C20 10 25 10 26 16" fill="${f1}" stroke="${sk}" stroke-width="1.5"/><circle cx="22.5" cy="8" r="2.5" fill="${f1}" stroke="${sk}"/><circle cx="22.5" cy="8" r="1.5" fill="${ac}"/><path d="M22.5 12L22.5 18" stroke="${ac}" stroke-width="2" stroke-linecap="round"/><line x1="20" y1="15" x2="25" y2="15" stroke="${ac}" stroke-width="1.5"/><ellipse cx="21" cy="22" rx="3" ry="5" fill="rgba(255,255,255,0.15)" transform="rotate(-5 21 22)"/><rect x="12" y="33" width="21" height="3" rx="1.5" fill="${ac}" opacity="0.6"/></g></svg>`;
+      case 'n': return `<svg viewBox="0 0 45 45">${defs}<g filter="${d}"><path d="M9 36L36 36 33 30 12 30Z" fill="${g}" stroke="${sk}" stroke-width="1.5"/><ellipse cx="22.5" cy="30" rx="12" ry="3" fill="${f1}" stroke="${sk}" stroke-width="1"/><path d="M15 30L14 20C14 15 18 12 22 10L28 8C30 7 31 9 30 11L26 16C30 18 32 22 32 26L32 30Z" fill="${g}" stroke="${sk}" stroke-width="1.5"/><path d="M28 8C32 6 35 8 34 12L30 11Z" fill="${f1}" stroke="${sk}" stroke-width="1.5"/><path d="M29 7L27 3 31 5Z" fill="${f1}" stroke="${sk}"/><circle cx="32" cy="9" r="1.2" fill="${w?'#333':'#aaa'}"/><path d="M20 12C22 10 25 9 27 10" fill="none" stroke="${ac}" stroke-width="1.5"/><path d="M18 16C20 14 23 13 25 14" fill="none" stroke="${ac}" stroke-width="1"/><path d="M17 20C19 18 22 17 24 18" fill="none" stroke="${ac}" stroke-width="1"/><ellipse cx="22" cy="22" rx="4" ry="4" fill="rgba(255,255,255,0.1)" transform="rotate(-10 22 22)"/><rect x="12" y="33" width="21" height="3" rx="1.5" fill="${ac}" opacity="0.6"/></g></svg>`;
+      case 'p': return `<svg viewBox="0 0 45 45">${defs}<g filter="${d}"><path d="M12 36L33 36 31 31 14 31Z" fill="${g}" stroke="${sk}" stroke-width="1.5"/><ellipse cx="22.5" cy="31" rx="10" ry="2.5" fill="${f1}" stroke="${sk}" stroke-width="1"/><path d="M17 31L18 22C18 19 27 19 27 22L28 31Z" fill="${g}" stroke="${sk}" stroke-width="1.5"/><circle cx="22.5" cy="16" r="6" fill="${g}" stroke="${sk}" stroke-width="1.5"/><ellipse cx="21" cy="15" rx="2.5" ry="3" fill="rgba(255,255,255,0.15)"/><rect x="14" y="34" width="17" height="2" rx="1" fill="${ac}" opacity="0.6"/></g></svg>`;
+      default: return '';
+    }
+  }
+};

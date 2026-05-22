@@ -1,0 +1,32 @@
+{
+  "name": "royal-chess-3d",
+  "version": "1.0.1",
+  "description": "Royal Chess 3D - Prince InfoTech Dhule",
+  "main": "index.html",
+  "scripts": {
+    "build": "echo 'Static site - no build step needed'",
+    "icons": "node generate-icons.js",
+    "cap:init": "npx cap init 'Royal Chess 3D' com.pitd.chess.test1 --web-dir .",
+    "cap:add:android": "npx cap add android",
+    "cap:sync": "npx cap sync",
+    "cap:open": "npx cap open android",
+    "apk:debug": "cd android && ./gradlew assembleDebug",
+    "apk:release": "cd android && ./gradlew assembleRelease"
+  },
+  "author": {
+    "name": "Prince InfoTech Dhule",
+    "email": "princeit.dh@gmail.com"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "@capacitor/android": "^6.0.0",
+    "@capacitor/core": "^6.0.0",
+    "@capacitor/splash-screen": "^6.0.0",
+    "@capacitor/status-bar": "^6.0.0",
+    "@capacitor/keyboard": "^6.0.0"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^6.0.0",
+    "sharp": "^0.33.0"
+  }
+}

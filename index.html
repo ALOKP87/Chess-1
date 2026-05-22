@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Royal Chess 3D</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <!-- Splash Screen -->
+  <div id="splash" class="screen active">
+    <div class="splash-bg"></div>
+    <div class="splash-content">
+      <div class="crown-icon">
+        <svg viewBox="0 0 100 80" width="120" height="96">
+          <defs>
+            <linearGradient id="crownGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#ffd700"/>
+              <stop offset="50%" style="stop-color:#b8860b"/>
+              <stop offset="100%" style="stop-color:#ffd700"/>
+            </linearGradient>
+          </defs>
+          <path d="M10 70 L20 20 L35 45 L50 10 L65 45 L80 20 L90 70 Z" fill="url(#crownGrad)" stroke="#8B6914" stroke-width="2"/>
+          <rect x="8" y="68" width="84" height="10" rx="3" fill="url(#crownGrad)" stroke="#8B6914" stroke-width="2"/>
+          <circle cx="20" cy="25" r="5" fill="#ff4444"/>
+          <circle cx="50" cy="15" r="5" fill="#4488ff"/>
+          <circle cx="80" cy="25" r="5" fill="#44ff44"/>
+        </svg>
+      </div>
+      <h1 class="splash-title">Royal Chess 3D</h1>
+      <p class="splash-subtitle">Prince InfoTech Dhule</p>
+      <div class="splash-buttons">
+        <button class="btn btn-primary" onclick="startGame('pvp')">
+          <span class="btn-icon">&#9818;</span> Player vs Player
+        </button>
+        <button class="btn btn-secondary" onclick="startGame('ai')">
+          <span class="btn-icon">&#9812;</span> Player vs Computer
+        </button>
+      </div>
+      <div class="splash-credits">
+        <p>UI & Graphics by <strong>FM Graphics</strong></p>
+        <p class="insta">@fmgr.aphics</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Game Screen -->
+  <div id="game" class="screen">
+    <div class="game-header">
+      <div class="player-bar black-bar" id="blackBar">
+        <div class="player-info">
+          <span class="player-color black"></span>
+          <span class="player-name" id="blackName">Black</span>
+        </div>
+        <div class="captured-pieces" id="blackCaptured"></div>
+        <div class="timer" id="blackTimer">10:00</div>
+      </div>
+    </div>
+
+    <div class="board-container">
+      <div class="board-frame">
+        <div class="file-labels top" id="fileLabelsTop">
+          <span>a</span><span>b</span><span>c</span><span>d</span><span>e</span><span>f</span><span>g</span><span>h</span>
+        </div>
+        <div class="board-with-ranks">
+          <div class="rank-labels left" id="rankLabelsLeft">
+            <span>8</span><span>7</span><span>6</span><span>5</span><span>4</span><span>3</span><span>2</span><span>1</span>
+          </div>
+          <div id="board" class="board"></div>
+          <div class="rank-labels right" id="rankLabelsRight">
+            <span>8</span><span>7</span><span>6</span><span>5</span><span>4</span><span>3</span><span>2</span><span>1</span>
+          </div>
+        </div>
+        <div class="file-labels bottom" id="fileLabelsBottom">
+          <span>a</span><span>b</span><span>c</span><span>d</span><span>e</span><span>f</span><span>g</span><span>h</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="game-header">
+      <div class="player-bar white-bar" id="whiteBar">
+        <div class="player-info">
+          <span class="player-color white"></span>
+          <span class="player-name" id="whiteName">White</span>
+        </div>
+        <div class="captured-pieces" id="whiteCaptured"></div>
+        <div class="timer" id="whiteTimer">10:00</div>
+      </div>
+    </div>
+
+    <div class="game-controls">
+      <button class="ctrl-btn" id="btnUndo" title="Undo">
+        <svg viewBox="0 0 24 24" width="22" height="22"><path d="M12.5 8c-2.65 0-5.05.99-6.9 2.6L2 7v9h9l-3.62-3.62c1.39-1.16 3.16-1.88 5.12-1.88 3.54 0 6.55 2.31 7.6 5.5l2.37-.78C21.08 11.03 17.15 8 12.5 8z" fill="currentColor"/></svg>
+      </button>
+      <button class="ctrl-btn" id="btnFlip" title="Flip Board">
+        <svg viewBox="0 0 24 24" width="22" height="22"><path d="M16 17.01V10h-2v7.01h-3L15 21l4-3.99h-3zM9 3L5 6.99h3V14h2V6.99h3L9 3z" fill="currentColor"/></svg>
+      </button>
+      <button class="ctrl-btn" id="btnMenu" title="Menu">
+        <svg viewBox="0 0 24 24" width="22" height="22"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" fill="currentColor"/></svg>
+      </button>
+      <button class="ctrl-btn" id="btnSound" title="Sound">
+        <svg viewBox="0 0 24 24" width="22" height="22"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z" fill="currentColor"/></svg>
+      </button>
+    </div>
+
+    <!-- Status messages -->
+    <div id="gameStatus" class="game-status hidden"></div>
+
+    <!-- Promotion Dialog -->
+    <div id="promotionDialog" class="dialog hidden">
+      <div class="dialog-content">
+        <h3>Promote Pawn</h3>
+        <div class="promo-pieces" id="promoPieces"></div>
+      </div>
+    </div>
+
+    <!-- Game Over Dialog -->
+    <div id="gameOverDialog" class="dialog hidden">
+      <div class="dialog-content game-over">
+        <h2 id="gameOverTitle"></h2>
+        <p id="gameOverMsg"></p>
+        <div class="dialog-buttons">
+          <button class="btn btn-primary" id="btnNewGameOver">New Game</button>
+          <button class="btn btn-secondary" id="btnReview">Review</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Menu Overlay -->
+  <div id="menuOverlay" class="overlay hidden">
+    <div class="menu-panel">
+      <h2>Game Menu</h2>
+      <button class="btn btn-primary" id="btnNewMenu">New Game</button>
+      <button class="btn btn-secondary" id="btnResume">Resume</button>
+      <div class="menu-info">
+        <p><strong>Royal Chess 3D</strong></p>
+        <p>v1.0.1</p>
+        <p>Prince InfoTech Dhule</p>
+        <p class="dev-email">princeit.dh@gmail.com</p>
+        <p>+91 8788283897</p>
+        <p>Graphics: FM Graphics</p>
+        <p class="insta">@fmgr.aphics</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="engine.js"></script>
+<script src="pieces.js"></script>
+<script src="app.js"></script>
+<script>
+  // Capacitor bridge - loads only when running as Android app
+  if (window.location.protocol === 'file:' || window.location.hostname === 'localhost') {
+    var s = document.createElement('script');
+    s.src = 'capacitor.js';
+    s.onerror = function() {}; // silent fail for browser
+    document.body.appendChild(s);
+  }
+</script>
+</body>
+</html>
